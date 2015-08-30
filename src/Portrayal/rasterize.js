@@ -2,7 +2,7 @@ var fs = require('fs'),
 	page = new WebPage(),
 	address, output, size;
 
-page.settings.userAgent = 'Portrayal (https://github.com/minicodemonkey/portrayal) 1.1.0';
+page.settings.userAgent = 'Portrayal (https://github.com/minicodemonkey/portrayal) 1.1.1';
  
 if (phantom.args.length < 2 || phantom.args.length > 3) {
 	console.log('Usage: rasterize.js URL filename');
