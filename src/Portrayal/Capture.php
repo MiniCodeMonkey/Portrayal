@@ -24,7 +24,7 @@ class Capture {
             ->run();
 
         if (!$process->isSuccessful()) {
-            throw new Exceptions\CaptureException($process->getOutput());
+            throw new Exceptions\CaptureException($process->getOutput() . $process->getErrorOutput());
         }
 
         return $outputFilename;
