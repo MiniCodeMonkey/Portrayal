@@ -1,3 +1,3 @@
-<?php namespace Engage\Portrayal\Exceptions;
+<?php namespace Portrayal\Exceptions;
 
 class CaptureException extends \Exception {}

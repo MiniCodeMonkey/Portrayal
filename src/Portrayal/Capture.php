@@ -1,4 +1,4 @@
-<?php namespace Engage\Portrayal;
+<?php namespace Portrayal;
 
 use Symfony\Component\Process\ProcessBuilder;
 

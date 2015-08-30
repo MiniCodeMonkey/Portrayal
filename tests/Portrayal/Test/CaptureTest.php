@@ -1,6 +1,6 @@
-<?php namespace Engage\Portrayal\Test;
+<?php namespace Portrayal\Test;
 
-use Engage\Portrayal\Capture;
+use Portrayal\Capture;
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -10,7 +10,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 	 */
     public function testCapture() {
     	$capture = new Capture();
-    	$filename = $capture->snap('https://github.com/engagedc/Portrayal', sys_get_temp_dir());
+    	$filename = $capture->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir());
 
     	$this->assertTrue(file_exists($filename));
     	$this->assertGreaterThan(100, filesize($filename));

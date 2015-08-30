@@ -5,4 +5,4 @@ if (!$loader = @include __DIR__.'/../vendor/autoload.php') {
         'php composer.phar install'.PHP_EOL);
 }
 
-$loader->add('Engage\Portrayal\Test', __DIR__);
+$loader->add('Portrayal\Test', __DIR__);
