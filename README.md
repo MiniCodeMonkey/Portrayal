@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/minicodemonkey/Portrayal.png?branch=master)](https://travis-ci.org/minicodemonkey/Portrayal)
+[![Build Status](https://travis-ci.org/MiniCodeMonkey/Portrayal.png?branch=master)](https://travis-ci.org/minicodemonkey/Portrayal)
 
 # Portrayal
 
