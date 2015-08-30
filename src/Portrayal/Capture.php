@@ -56,15 +56,15 @@ class Capture {
     {
         $uname = strtolower(php_uname());
 
-        if (str_contains($uname, 'darwin'))
+        if (strpos($uname, 'darwin') !== FALSE)
         {
             return 'macosx';
         }
-        elseif (str_contains($uname, 'win'))
+        elseif (strpos($uname, 'win') !== FALSE)
         {
             return 'windows';
         }
-        elseif (str_contains($uname, 'linux'))
+        elseif (strpos($uname, 'linux') !== FALSE)
         {
             return PHP_INT_SIZE === 4 ? 'linux-i686' : 'linux-x86_64';
         }
