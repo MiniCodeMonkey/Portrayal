@@ -12,13 +12,13 @@ You can install this package through Composer. Edit your project's `composer.jso
 
 ```json
 "require": {
-	"minicodemonkey/portrayal": "~1.1"
+	"minicodemonkey/portrayal": "1.*"
 }
 ```
 
 Now run `composer update` from the terminal, and you're good to go!
 
-> You can also just run `composer require "minicodemonkey/portrayal:~1.1"`
+> You can also just run `composer require "minicodemonkey/portrayal:1.*"`
 
 ## Usage
 ```php
