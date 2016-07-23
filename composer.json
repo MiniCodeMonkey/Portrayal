@@ -1,7 +1,7 @@
 {
     "name": "minicodemonkey/portrayal",
     "description": "Simple, self-contained library allows you to capture screenshots using PhantomJS.",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "authors": [
         {
             "name": "Mathias Hansen",
@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "symfony/process": "2.*"
+        "symfony/process": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
