@@ -1,24 +1,35 @@
 {
-    "name": "minicodemonkey/portrayal",
-    "description": "Simple, self-contained library allows you to capture screenshots using PhantomJS.",
-    "version": "1.2.0",
-    "authors": [
-        {
-            "name": "Mathias Hansen",
-            "email": "me@codemonkey.io"
-        }
+  "name": "minicodemonkey/portrayal",
+  "description": "Simple, self-contained library allows you to capture screenshots using PhantomJS.",
+  "version": "1.3.0",
+  "authors": [
+    {
+      "name": "Mathias Hansen",
+      "email": "me@codemonkey.io"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "symfony/process": "^3.0",
+    "jakoch/phantomjs-installer": "2.1.1-p05"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "PhantomInstaller\\Installer::installPhantomJS"
     ],
-    "require": {
-        "php": ">=5.4.0",
-        "symfony/process": "^3.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*"
-    },
-    "autoload": {
-        "psr-0": {
-            "Portrayal\\": "src/"
-        }
-    },
-    "minimum-stability": "dev"
+    "post-update-cmd": [
+      "PhantomInstaller\\Installer::installPhantomJS"
+    ]
+  },
+  "autoload": {
+    "psr-0": {
+      "Portrayal\\": "src/"
+    }
+  }
 }

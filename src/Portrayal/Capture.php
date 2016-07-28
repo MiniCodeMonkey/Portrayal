@@ -1,6 +1,9 @@
-<?php namespace Portrayal;
+<?php
+
+namespace Portrayal;
 
 use Symfony\Component\Process\ProcessBuilder;
+use PhantomInstaller\PhantomBinary;
 
 class Capture {
 
@@ -39,50 +42,10 @@ class Capture {
      */
     public function getPhantomProcess($url, $outputFilename)
     {
-        $system = $this->getSystem();
-
-        $phantom = __DIR__ . '/bin/' . $system . '/phantomjs' . $this->getExtension($system);
+        $phantom = PhantomBinary::BIN;
 
         return (new ProcessBuilder([$phantom, '--ignore-ssl-errors=true', '--ssl-protocol=tlsv1', 'rasterize.js', $url, $outputFilename]))
                 ->getProcess();
-    }
-
-    /**
-     * Get the operating system for the current platform.
-     *
-     * @return string
-     */
-    protected function getSystem()
-    {
-        $uname = strtolower(php_uname());
-
-        if (strpos($uname, 'darwin') !== FALSE)
-        {
-            return 'macosx';
-        }
-        elseif (strpos($uname, 'win') !== FALSE)
-        {
-            return 'windows';
-        }
-        elseif (strpos($uname, 'linux') !== FALSE)
-        {
-            return PHP_INT_SIZE === 4 ? 'linux-i686' : 'linux-x86_64';
-        }
-        else
-        {
-            throw new \RuntimeException("Unknown operating system.");
-        }
-    }
-
-    /**
-     * Get the binary extension for the system.
-     *
-     * @param  string  $system
-     * @return string
-     */
-    protected function getExtension($system)
-    {
-        return $system == 'windows' ? '.exe' : '';
     }
 
 }

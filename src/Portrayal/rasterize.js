@@ -1,15 +1,16 @@
 var fs = require('fs'),
-	page = new WebPage(),
+	page = require('webpage').create(),
+	system = require('system'),
 	address, output, size;
 
 page.settings.userAgent = 'Portrayal (https://github.com/minicodemonkey/portrayal) 1.1.1';
- 
-if (phantom.args.length < 2 || phantom.args.length > 3) {
+
+if (system.args.length < 3 || system.args.length > 4) {
 	console.log('Usage: rasterize.js URL filename');
 	phantom.exit();
 } else {
-	address = phantom.args[0];
-	output = phantom.args[1];
+	address = system.args[1];
+	output = system.args[2];
 	page.viewportSize = { width: 1280, height: 600 };
 	page.onConsoleMessage = function(msg) { console.log(msg); };
 	page.open(address, function (status) {
