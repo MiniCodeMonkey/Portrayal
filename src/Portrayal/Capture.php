@@ -14,13 +14,15 @@ class Capture {
      * @param  string  $url Full url including protocol
      * @param  string  $storagePath Path to store the image in
      * @param  string  $timeout Timeout in seconds
+     * @param  string  $renderDelay The delay to wait after page load before taking screenshot
+     * @param  string  $disableAnimations Whether to inject code to disable CSS and jQuery animations
      * @return string  Full path and filename for the screenshot
      */
-    public function snap($url, $storagePath, $timeout = 30)
+    public function snap($url, $storagePath, $timeout = 30, $renderDelay = 350, $disableAnimations = false)
     {
         $outputFilename = $storagePath . '/' . sha1($url) . '.png';
 
-        $process = $this->getPhantomProcess($url, $outputFilename);
+        $process = $this->getPhantomProcess($url, $outputFilename, $renderDelay, $disableAnimations);
         
         $process->setTimeout($timeout)
             ->setWorkingDirectory(__DIR__)
@@ -40,11 +42,11 @@ class Capture {
      * @param  string  $outputFilename
      * @return \Symfony\Component\Process\Process
      */
-    public function getPhantomProcess($url, $outputFilename)
+    public function getPhantomProcess($url, $outputFilename, $renderDelay, $disableAnimations)
     {
         $phantom = PhantomBinary::BIN;
 
-        return (new ProcessBuilder([$phantom, '--ignore-ssl-errors=true', '--ssl-protocol=tlsv1', 'rasterize.js', $url, $outputFilename]))
+        return (new ProcessBuilder([$phantom, '--ignore-ssl-errors=true', '--ssl-protocol=tlsv1', 'rasterize.js', $url, $outputFilename, $renderDelay, $disableAnimations ? 'true' : 'false']))
                 ->getProcess();
     }
 

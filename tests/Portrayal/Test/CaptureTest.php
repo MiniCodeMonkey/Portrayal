@@ -21,6 +21,17 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         @unlink($filename);
     }
 
+    public function testCaptureWithoutAnimations() {
+        $capture = new Capture();
+        $filename = $capture->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir(), 350, true);
+
+        $this->assertTrue(file_exists($filename));
+        $this->assertGreaterThan(100, filesize($filename));
+
+        // Clean up
+        @unlink($filename);
+    }
+
     public function testCaptureInvalidUrl() {
         $this->setExpectedException(\Portrayal\Exceptions\CaptureException::class);
         $capture = new Capture();

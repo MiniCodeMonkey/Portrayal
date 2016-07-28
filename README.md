@@ -45,5 +45,11 @@ $filename = $capture->snap('https://github.com/minicodemonkey/Portrayal', sys_ge
 You can adjust the timeout value by appending a third parameter to `snap(...)`. E.g. 15 second timeout:
 
 ```php
-$filename = $capture->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir(), 15);
+$filename = $capture->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir(), $timeout = 15);
+```
+
+You can also adjust the render delay (default: 350ms) as well as whether or not to disable animations.
+
+```php
+$filename = $capture->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir(), $timeout = 15, $renderDelay = 350, $disableAnimations = true);
 ```
