@@ -36,12 +36,16 @@ if (system.args.length < 3 || system.args.length > 6) {
 						'-o-transition: none !important;' +
 						'transition: none !important;'
 
-					window.onload = function() {
-						var animationStyles = document.createElement('style');
-						animationStyles.type = 'text/css';
-						animationStyles.innerHTML = '* {' + disableAnimationStyles + '}';
-						document.head.appendChild(animationStyles);
-					};
+					var animationStyles = document.createElement('style');
+					animationStyles.type = 'text/css';
+					animationStyles.innerHTML = '* {' + disableAnimationStyles + '}';
+					document.head.appendChild(animationStyles);
+
+					// Disable HTML5 video
+					var videoTags = document.getElementsByTagName('video');
+					for (var i in videoTags) {
+						videoTags[i].pause();
+					}
 				});
 			}
 
