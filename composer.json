@@ -1,7 +1,7 @@
 {
   "name": "minicodemonkey/portrayal",
-  "description": "Simple, self-contained library allows you to capture screenshots using PhantomJS.",
-  "version": "1.5.0",
+  "description": "Simple, self-contained library allows you to capture screenshots of websites using PhantomJS.",
+  "version": "2.0.0",
   "authors": [
     {
       "name": "Mathias Hansen",
