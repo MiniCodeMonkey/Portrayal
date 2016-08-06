@@ -10,7 +10,7 @@ You can install this package through Composer. Edit your project's `composer.jso
 
 ```json
 "require": {
-	"minicodemonkey/portrayal": "1.*"
+	"minicodemonkey/portrayal": "~2.0"
 }
 ```
 
