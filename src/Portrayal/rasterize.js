@@ -35,18 +35,17 @@ if (system.args.length !== 8) {
 						'-moz-transition: none !important;' +
 						'-ms-transition: none !important;' +
 						'-o-transition: none !important;' +
-						'transition: none !important;'
+						'transition: none !important;' +
+						'-webkit-animation: none !important;' +
+						'-moz-animation: none !important;' +
+						'-ms-animation: none !important;' +
+						'-o-animation: none !important;' +
+						'animation: none !important;';
 
 					var animationStyles = document.createElement('style');
 					animationStyles.type = 'text/css';
 					animationStyles.innerHTML = '* {' + disableAnimationStyles + '}';
 					document.head.appendChild(animationStyles);
-
-					// Disable HTML5 video
-					var videoTags = document.getElementsByTagName('video');
-					for (var i in videoTags) {
-						videoTags[i].pause();
-					}
 				});
 			}
 
