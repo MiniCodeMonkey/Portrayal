@@ -119,7 +119,7 @@ class Capture {
 
         return (new ProcessBuilder([
             $phantom, '--ignore-ssl-errors=true', '--ssl-protocol=tlsv1', 'rasterize.js',
-            $url, $outputFilename, $this->renderDelay * 100, $this->disableAnimations ? 'true' : 'false',
+            $url, $outputFilename, $this->renderDelay * 1000, $this->disableAnimations ? 'true' : 'false',
             $this->userAgent, $this->viewPortWidth, $this->viewPortHeight
         ]))->getProcess();
     }
