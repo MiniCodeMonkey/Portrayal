@@ -4,7 +4,7 @@ namespace Portrayal\Test;
 
 use Portrayal\Capture;
 
-class ParserTest extends \PHPUnit_Framework_TestCase
+class CaptureTest extends \PHPUnit_Framework_TestCase
 {
 	/**
      * Just a simple test to ensure that the snap function
