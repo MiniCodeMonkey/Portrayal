@@ -14,6 +14,7 @@ class Capture {
     private $userAgent = 'Portrayal (https://github.com/minicodemonkey/portrayal) 2.0.0';
     private $viewPortWidth = 1280;
     private $viewPortHeight = 600;
+    private $cookiesFile = null;
 
     /**
      * Captures a screenshot of the given url and stores it
@@ -106,6 +107,16 @@ class Capture {
         return $this;
     }
 
+    public function getCookiesFile() {
+        return $this->cookiesFile;
+    }
+
+    public function setCookiesFile($cookiesFile) {
+        $this->cookiesFile = $cookiesFile;
+
+        return $this;
+    }
+
     /**
      * Get the PhantomJS process instance.
      *
@@ -117,11 +128,23 @@ class Capture {
     {
         $phantom = PhantomBinary::BIN;
 
-        return (new ProcessBuilder([
-            $phantom, '--ignore-ssl-errors=true', '--ssl-protocol=tlsv1', 'rasterize.js',
-            $url, $outputFilename, $this->renderDelay * 1000, $this->disableAnimations ? 'true' : 'false',
-            $this->userAgent, $this->viewPortWidth, $this->viewPortHeight
-        ]))->getProcess();
+        $argumentsList = [];
+        if ($this->cookiesFile) {
+            $argumentsList[] = '--cookies-file=' . $this->cookiesFile;
+        }
+
+        $argumentsList[] = '--ignore-ssl-errors=true';
+        $argumentsList[] = '--ssl-protocol=tlsv1';
+        $argumentsList[] = 'rasterize.js';
+        $argumentsList[] = $url;
+        $argumentsList[] = $outputFilename;
+        $argumentsList[] = $this->renderDelay * 1000;
+        $argumentsList[] = $this->disableAnimations ? 'true' : 'false';
+        $argumentsList[] = $this->userAgent;
+        $argumentsList[] = $this->viewPortWidth;
+        $argumentsList[] = $this->viewPortHeight;
+
+        return (new ProcessBuilder(array_merge([$phantom], $argumentsList)))->getProcess();
     }
 
 }

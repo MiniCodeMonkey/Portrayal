@@ -99,4 +99,21 @@ class CaptureTest extends \PHPUnit_Framework_TestCase
         $filename = $capture->snap('http://somelongdomainnamethatdoesnotexistatall' . uniqid() . '.com', sys_get_temp_dir());
     }
 
+    public function testCaptureWithCookieFile() {
+        $cookiesFilename = sys_get_temp_dir() . '/cookies-' . uniqid() . '.txt';
+
+        $capture = new Capture();
+        $screenshot = $capture
+            ->setCookiesFile($cookiesFilename)
+            ->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir());
+
+        $cookiesFileContents = file_get_contents($cookiesFilename);
+        
+        $this->assertNotEmpty($cookiesFileContents);
+
+        // Clean up
+        @unlink($filename);
+        @unlink($cookiesFilename);
+    }
+
 }

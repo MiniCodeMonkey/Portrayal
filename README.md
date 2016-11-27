@@ -86,3 +86,12 @@ $capture = new \Portrayal\Capture;
 $filename = $capture->setViewPort($width = 320, $height = 480)
     ->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir());
 ```
+
+### Specify a custom cookie jar
+This will allow you to set specific cookies for the session, this is for example useful for retaining the cookie state across multiple requests.
+
+```php
+$capture = new \Portrayal\Capture;
+$filename = $capture->setCookiesFile('/tmp/cookies.txt')
+    ->snap('https://github.com/minicodemonkey/Portrayal', sys_get_temp_dir());
+```
